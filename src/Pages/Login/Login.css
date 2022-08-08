@@ -1,0 +1,18 @@
+.slider-light {
+  background: #fff;
+  border-right: 1px solid #CED4DA;
+}
+
+.app-logo {
+  background: url('../../assets/utils/images/BaroPace-Logo-Blue.png');
+  width: 168px;
+  height: 90px;
+}
+
+.signin-title {
+  font-style: italic;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
+  color: #6E777F;
+}

@@ -1,0 +1,89 @@
+.PatientRegistration-main{
+  .header-title{
+    h4{
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+  }
+  .blue-button{
+    font-size: 15px;
+    letter-spacing: 0.6px;
+    padding: 5px 20px;
+  }
+  .custom-lable {
+    font-size: 15px;
+  }
+  .form-control, .input-group-text{
+    margin-bottom: 20px;
+  }
+  .input-group > .react-datepicker-wrapper > .react-datepicker__input-container > .form-control{
+      border-top-right-radius: 0.25rem; 
+      border-bottom-right-radius: 0.25rem;
+  }
+  .input-group-text{
+    &.date-picker{
+      position: absolute!important;
+      top: 4px!important;
+      right: 1px!important;
+      z-index: 101!important;
+      background-color: #ffffff!important;
+      border: 0!important;
+      color: #545CD8 !important;
+    }
+  }
+  .custom-checkboax-radio--container {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: -4px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    user-select: none;
+    height: 19px;
+    width: -webkit-max-content;
+    width: max-content;
+    border: 2px solid #083ABF;
+    border-radius: 25px;
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+      &:checked~.checkmark-radio {
+        background-color: #083ABF;
+        &:after {
+          display: block;
+        }
+      }
+    }
+    .checkmark-radio {
+      &:after {
+        left: 0;
+        top: 0.4px;
+        width: 15px;
+        height: 14.5px;
+        border: 2px solid #fff;
+        border-radius: 25px;
+      }
+    }
+  }
+  .checkmark-radio {
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #fff;
+    border-radius: 25px;
+  }
+  .react-datepicker__day--selected{
+    background-color: #20429a;
+  }
+  
+}

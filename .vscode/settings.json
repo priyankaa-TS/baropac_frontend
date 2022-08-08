@@ -1,0 +1,14 @@
+{
+  "eslint.enable": false,
+  "eslint.run": "onType",
+  "eslint.autoFixOnSave": true,
+  "editor.formatOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.trace.server": "messages",
+  "editor.autoIndent": "full",
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+}

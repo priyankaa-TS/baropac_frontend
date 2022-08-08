@@ -1,0 +1,81 @@
+html,
+body {
+  font-family: Helvetica;
+  /* text-transform: capitalize; */
+}
+
+.App {
+  text-align: center;
+}
+
+.App-link {
+  color: #545CD8;
+}
+
+.required-field {
+  color: #545CD8;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+.custom-lable {
+  font-size: 16px;
+  color: #495057;
+}
+
+.form-control:focus {
+  color: #495057 !important;
+  border-color: #ced4da !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+.blue-button {
+  background: #083ABF;
+  border: 1px solid #083ABF;
+  border-radius: 24px;
+  color: #fff;
+  min-width: 110px;
+  padding: 7px 20px;
+}
+
+.Rows-per-page {
+  font-family: Helvetica;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #9e9e9e;
+  margin-top: 10px;
+  padding-right: 5px;
+}
+
+.rows-per-page-select {
+  width: 46px !important;
+  font-size: 14px !important;
+  padding: 0 !important;
+  height: 30px !important;
+  margin-top: auto !important;
+  padding-left: 5px !important;
+  margin-bottom: auto !important;
+}
+
+.select {
+  position: relative;
+  -webkit-appearance: none;
+  background: url(/images/down-arrow.svg) no-repeat 100% #fff;
+  background-position-x: 96%;
+  font-family: Helvetica;
+  background-size: 15px;
+}
+
+@media (max-width: 420px) {
+  .app-header__logo .logo-src {
+    background-position: center !important;
+  }
+}
