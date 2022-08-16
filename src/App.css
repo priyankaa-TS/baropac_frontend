@@ -26,6 +26,10 @@ body {
   color: #495057;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .form-control:focus {
   color: #495057 !important;
   border-color: #ced4da !important;
@@ -40,6 +44,17 @@ body {
   color: #fff;
   min-width: 110px;
   padding: 7px 20px;
+  font-size: 16px;
+}
+
+.blue-line-button {
+  background: #FFFFFF;
+  border: 1px solid #083ABF;
+  border-radius: 24px;
+  color: #083ABF;
+  min-width: 110px;
+  padding: 7px 20px;
+  font-size: 16px;
 }
 
 .Rows-per-page {
@@ -74,8 +89,17 @@ body {
   background-size: 15px;
 }
 
+.react-datepicker__day--selected {
+  background-color: #545CD8 !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: #545CD8 !important;
+}
+
 @media (max-width: 420px) {
   .app-header__logo .logo-src {
     background-position: center !important;
+    width: 230px;
   }
 }

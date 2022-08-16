@@ -87,6 +87,69 @@ export default class PatientRegistration extends Component {
           showErrorMsg: false,
           autoFocus: false,
         },
+        gender: {
+          value: "male",
+          valid: null,
+          touched: false,
+          nullValue: null,
+          required: true,
+          showErrorMsg: false,
+          autoFocus: false,
+        },
+        address: {
+          value: "",
+          valid: null,
+          touched: false,
+          nullValue: null,
+          required: true,
+          showErrorMsg: false,
+          autoFocus: false,
+        },
+        state: {
+          value: "",
+          valid: null,
+          touched: false,
+          nullValue: null,
+          required: true,
+          showErrorMsg: false,
+          autoFocus: false,
+        },
+        city: {
+          value: "",
+          valid: null,
+          touched: false,
+          nullValue: null,
+          required: true,
+          showErrorMsg: false,
+          autoFocus: false,
+        },
+        pacemaker_number: {
+          value: "",
+          valid: null,
+          touched: false,
+          nullValue: null,
+          required: true,
+          showErrorMsg: false,
+          autoFocus: false,
+        },
+        physician_contact: {
+          value: "",
+          valid: null,
+          touched: false,
+          nullValue: null,
+          required: true,
+          showErrorMsg: false,
+          autoFocus: false,
+        },
+        cardiologist_contact: {
+          value: "",
+          valid: null,
+          touched: false,
+          nullValue: null,
+          required: true,
+          showErrorMsg: false,
+          autoFocus: false,
+        },
       },
     };
   }
@@ -106,7 +169,19 @@ export default class PatientRegistration extends Component {
 
   handleValidation = (isSubmit = false) => {
     let { controls, isFormValid } = this.state;
-    let { first_name, last_name, phone_number, email, birth_date } = controls;
+    let {
+      first_name,
+      last_name,
+      phone_number,
+      email,
+      birth_date,
+      address,
+      state,
+      city,
+      pacemaker_number,
+      physician_contact,
+      cardiologist_contact,
+    } = controls;
     isFormValid = true;
 
     if (first_name.touched === true || isSubmit) {
@@ -162,12 +237,86 @@ export default class PatientRegistration extends Component {
       }
     }
 
+    if (address.touched === true || isSubmit) {
+      address = Validation.notNullValidator(address);
+      address.valid = !address.nullValue;
+      if (address.valid === false) {
+        address.showErrorMsg = true;
+      } else {
+        address.showErrorMsg = false;
+      }
+    }
+
+    if (state.touched === true || isSubmit) {
+      state = Validation.notNullValidator(state);
+      state.valid = !state.nullValue;
+      if (state.valid === false) {
+        state.showErrorMsg = true;
+      } else {
+        state.showErrorMsg = false;
+      }
+    }
+
+    if (city.touched === true || isSubmit) {
+      city = Validation.notNullValidator(city);
+      city.valid = !city.nullValue;
+      if (city.valid === false) {
+        city.showErrorMsg = true;
+      } else {
+        city.showErrorMsg = false;
+      }
+    }
+
+    if (pacemaker_number.touched === true || isSubmit) {
+      pacemaker_number = Validation.notNullValidator(pacemaker_number);
+      pacemaker_number.valid = !pacemaker_number.nullValue;
+      if (pacemaker_number.valid === false) {
+        pacemaker_number.showErrorMsg = true;
+      } else {
+        pacemaker_number.showErrorMsg = false;
+      }
+    }
+
+    if (physician_contact.touched === true || isSubmit) {
+      physician_contact = Validation.notNullValidator(physician_contact);
+      physician_contact = Validation.validatePhoneNumber(physician_contact);
+      physician_contact.valid = !(
+        physician_contact.nullValue || physician_contact.invalidPhone
+      );
+      if (physician_contact.valid === false) {
+        physician_contact.showErrorMsg = true;
+      } else {
+        physician_contact.showErrorMsg = false;
+      }
+    }
+
+    if (cardiologist_contact.touched === true || isSubmit) {
+      cardiologist_contact = Validation.notNullValidator(cardiologist_contact);
+      cardiologist_contact = Validation.validatePhoneNumber(
+        cardiologist_contact
+      );
+      cardiologist_contact.valid = !(
+        cardiologist_contact.nullValue || cardiologist_contact.invalidPhone
+      );
+      if (cardiologist_contact.valid === false) {
+        cardiologist_contact.showErrorMsg = true;
+      } else {
+        cardiologist_contact.showErrorMsg = false;
+      }
+    }
+
     if (
       first_name.valid === true &&
       last_name.valid === true &&
       email.valid === true &&
       phone_number.valid === true &&
-      birth_date.valid === true
+      birth_date.valid === true &&
+      address.valid === true &&
+      state.valid === true &&
+      city.valid === true &&
+      pacemaker_number.valid === true &&
+      physician_contact.valid === true &&
+      cardiologist_contact.valid === true
     ) {
       isFormValid = true;
     } else {
@@ -180,9 +329,7 @@ export default class PatientRegistration extends Component {
 
   handleInputChange = (e) => {
     let controlName = e.target.name;
-    console.log("controlName: ", controlName);
     let controlValue = e.target.value;
-    console.log("controlValue: ", controlValue);
     // console.log("FORM",e.target.name, e.target.value);
 
     // if(controls)
@@ -202,12 +349,18 @@ export default class PatientRegistration extends Component {
     this.setState({ controls });
   };
 
+  handleRadioChange = (e) => {
+    let { controls } = this.state;
+    controls.gender.value = e;
+    this.setState({ controls });
+  };
+
   render() {
     const { controls } = this.state;
     console.log("controls: ", controls);
     return (
       <Fragment>
-        <ThemeOptions />
+        {/* <ThemeOptions /> */}
         <AppHeader />
         <div className="app-main">
           <AppSidebar />
@@ -226,98 +379,108 @@ export default class PatientRegistration extends Component {
                         </CardTitle>
                         <Row>
                           <Col lg="4">
-                            <Label className="custom-lable">
-                              Patient First Name
-                              <span className="required-field">*</span>
-                            </Label>
-                            <Input
-                              type="text"
-                              name="first_name"
-                              placeholder="Type Here"
-                              onChange={this.handleInputChange}
-                              value={controls.first_name.value}
-                              id="first_name"
-                            />
-                            {controls.first_name.showErrorMsg && (
-                              <div className="error">
-                                * Please add program name.
-                              </div>
-                            )}
+                            <FormGroup>
+                              <Label className="custom-lable">
+                                Patient First Name
+                                <span className="required-field">*</span>
+                              </Label>
+                              <Input
+                                type="text"
+                                name="first_name"
+                                placeholder="Type Here"
+                                onChange={this.handleInputChange}
+                                value={controls.first_name.value}
+                                id="first_name"
+                              />
+                              {controls.first_name.showErrorMsg && (
+                                <div className="error">
+                                  * Please add program name.
+                                </div>
+                              )}
+                            </FormGroup>
                           </Col>
                           <Col lg="4">
-                            <Label className="custom-lable">
-                              Patient Last Name
-                              <span className="required-field">*</span>
-                            </Label>
-                            <Input
-                              type="text"
-                              name="last_name"
-                              placeholder="Type Here"
-                              onChange={this.handleInputChange}
-                              value={controls.last_name.value}
-                              id="last_name"
-                            />
-                            {controls.last_name.showErrorMsg && (
-                              <div className="error">
-                                * Please add program name.
-                              </div>
-                            )}
+                            <FormGroup>
+                              <Label className="custom-lable">
+                                Patient Last Name
+                                <span className="required-field">*</span>
+                              </Label>
+                              <Input
+                                type="text"
+                                name="last_name"
+                                placeholder="Type Here"
+                                onChange={this.handleInputChange}
+                                value={controls.last_name.value}
+                                id="last_name"
+                              />
+                              {controls.last_name.showErrorMsg && (
+                                <div className="error">
+                                  * Please add program name.
+                                </div>
+                              )}
+                            </FormGroup>
                           </Col>
                         </Row>
                         <Row>
                           <Col lg="4">
-                            <Label className="custom-lable">
-                              Mobile Number
-                              <span className="required-field">*</span>
-                            </Label>
-                            <InputGroup>
-                              <InputGroupAddon addonType="prepend">
-                                +91
-                              </InputGroupAddon>
-                              <Input
-                                type="text"
-                                name="phone_number"
-                                placeholder="Type Here"
-                                onChange={this.handleInputChange}
-                                value={controls.phone_number.value}
-                                id="phone_number"
-                              />
+                            <FormGroup>
+                              <Label className="custom-lable">
+                                Mobile Number
+                                <span className="required-field">*</span>
+                              </Label>
+                              <InputGroup>
+                                <InputGroupAddon addonType="prepend">
+                                  +91
+                                </InputGroupAddon>
+                                <Input
+                                  type="text"
+                                  name="phone_number"
+                                  placeholder="Type Here"
+                                  onChange={this.handleInputChange}
+                                  value={controls.phone_number.value}
+                                  id="phone_number"
+                                />
+                              </InputGroup>
                               {controls.phone_number.showErrorMsg && (
                                 <div className="error">
                                   * Please add phone number.
                                 </div>
                               )}
-                            </InputGroup>
+                            </FormGroup>
                           </Col>
 
                           <Col lg="4">
-                            <Label className="custom-lable">
-                              Email
-                              <span className="required-field">*</span>
-                            </Label>
-                            <Input
-                              type="email"
-                              name="email"
-                              placeholder="Type Here"
-                              onChange={this.handleInputChange}
-                              value={controls.email.value}
-                              id="email"
-                            />
-                            {controls.email.showErrorMsg && (
-                              <div className="error">* Please enter email.</div>
-                            )}
+                            <FormGroup>
+                              <Label className="custom-lable">
+                                Email
+                                <span className="required-field">*</span>
+                              </Label>
+                              <Input
+                                type="email"
+                                name="email"
+                                placeholder="Type Here"
+                                onChange={this.handleInputChange}
+                                value={controls.email.value}
+                                id="email"
+                              />
+                              {controls.email.showErrorMsg && (
+                                <div className="error">
+                                  * Please enter email.
+                                </div>
+                              )}
+                            </FormGroup>
                           </Col>
                         </Row>
                         <Row>
                           <Col lg="12">
-                            <label check>
+                            <label check="true">
                               <input type="checkbox" /> Opt-in for text message
                             </label>
                           </Col>
                         </Row>
                         <Row>
                           <Col lg="4">
-                            <FormGroup className="d-flex-column">
+                            <FormGroup className="datepicker-input">
                               <Label className="custom-lable">
                                 DOB
                                 <span className="required-field">*</span>
@@ -325,7 +488,7 @@ export default class PatientRegistration extends Component {
                               <InputGroup>
                                 <DatePicker
                                   className="form-control"
-                                  placeholder="dd/mm/yyyy"
+                                  placeholderText="dd/mm/yyyy"
                                   dateFormat="dd/MM/yyyy"
                                   selected={controls.birth_date.value}
                                   // selected={this.state.startDate}
@@ -348,64 +511,82 @@ export default class PatientRegistration extends Component {
                             </FormGroup>
                           </Col>
                           <Col lg="4">
-                            <Label className="custom-lable">
-                              Gender
-                              <span className="required-field">*</span>
-                            </Label>
-                            <Row>
-                              <Col lg="4" md="6" xs="4">
-                                <FormGroup>
-                                  <div className="d-flex-row pcrtype-wrapp">
-                                    <label className="custom-checkboax-radio--container">
-                                      <input
-                                        type="radio"
-                                        name="offer_status"
-                                        value=""
-                                        // onChange={() => {
-                                        //   this.handleRadioChange("");
-                                        // }}
-                                        // checked={controls.offer_status.value === ""}
-                                      />
-                                      <span className="checkmark-radio" />
-                                    </label>
-                                    <span className="label-text pl-2">
-                                      Male
-                                    </span>
-                                  </div>
-                                </FormGroup>
-                              </Col>
-                              <Col lg="4" md="6" xs="4">
-                                <FormGroup>
-                                  <div className="d-flex-row pcrtype-wrapp">
-                                    <label className="custom-checkboax-radio--container">
-                                      <input
-                                        type="radio"
-                                        name="offer_status"
-                                        value=""
-                                        checked
-                                        // onChange={() => {
-                                        //   this.handleRadioChange("");
-                                        // }}
-                                        // checked={controls.offer_status.value === ""}
-                                      />
-                                      <span className="checkmark-radio" />
-                                    </label>
-                                    <span className="label-text pl-2">
-                                      Female
-                                    </span>
-                                  </div>
-                                </FormGroup>
-                              </Col>
-                            </Row>
+                            <FormGroup>
+                              <Label className="custom-lable">
+                                Gender
+                                <span className="required-field">*</span>
+                              </Label>
+                              <Row>
+                                <Col lg="4" md="6" xs="4">
+                                  <FormGroup>
+                                    <div className="d-flex-row pcrtype-wrapp">
+                                      <label className="custom-checkboax-radio--container">
+                                        <input
+                                          type="radio"
+                                          name="gender"
+                                          value="male"
+                                          onChange={() => {
+                                            this.handleRadioChange("male");
+                                          }}
+                                          checked={
+                                            controls.gender.value === "male"
+                                          }
+                                        />
+                                        <span className="checkmark-radio" />
+                                      </label>
+                                      <span className="label-text pl-2">
+                                        Male
+                                      </span>
+                                    </div>
+                                  </FormGroup>
+                                </Col>
+                                <Col lg="4" md="6" xs="4">
+                                  <FormGroup>
+                                    <div className="d-flex-row pcrtype-wrapp">
+                                      <label className="custom-checkboax-radio--container">
+                                        <input
+                                          type="radio"
+                                          name="gender"
+                                          value="female"
+                                          onChange={() => {
+                                            this.handleRadioChange("female");
+                                          }}
+                                          checked={
+                                            controls.gender.value === "female"
+                                          }
+                                        />
+                                        <span className="checkmark-radio" />
+                                      </label>
+                                      <span className="label-text pl-2">
+                                        Female
+                                      </span>
+                                    </div>
+                                  </FormGroup>
+                                </Col>
+                              </Row>
+                            </FormGroup>
                           </Col>
                         </Row>
                         <Row>
                           <Col lg="4">
-                            <Label className="custom-lable">
-                              Address
-                              <span className="required-field">*</span>
-                            </Label>
-                            <Input type="textarea" name="text" id="address" />
+                            <FormGroup>
+                              <Label className="custom-lable">
+                                Address
+                                <span className="required-field">*</span>
+                              </Label>
+                              <Input
+                                type="textarea"
+                                name="address"
+                                id="address"
+                                onChange={this.handleInputChange}
+                                value={controls.address.value}
+                              />
+                              {controls.address.showErrorMsg && (
+                                <div className="error">
+                                  * Please enter address.
+                                </div>
+                              )}
+                            </FormGroup>
                           </Col>
                           <Col lg="4">
                             <FormGroup>
@@ -414,18 +595,23 @@ export default class PatientRegistration extends Component {
                               </Label>
                               <select
                                 className="form-control form-group-select select select-height-70rem"
-                                name="program_name"
-                                // value={controls.program_name.value}
-                                // onChange={(e) => {
-                                //   this.handleInputChange(e);
-                                // }}
+                                name="state"
+                                value={controls.state.value}
+                                onChange={(e) => {
+                                  this.handleInputChange(e);
+                                }}
                               >
                                 <option className="label-text" value="">
                                   Select
                                 </option>
-                                <option>1</option>
-                                <option>2</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
                               </select>
+                              {controls.state.showErrorMsg && (
+                                <div className="error">
+                                  * Please select state.
+                                </div>
+                              )}
                             </FormGroup>
                           </Col>
                           <Col lg="4">
@@ -436,71 +622,103 @@ export default class PatientRegistration extends Component {
                               </Label>
                               <select
                                 className="form-control form-group-select select select-height-70rem"
-                                name="program_name"
-                                // value={controls.program_name.value}
-                                // onChange={(e) => {
-                                //   this.handleInputChange(e);
-                                // }}
+                                name="city"
+                                value={controls.city.value}
+                                onChange={(e) => {
+                                  this.handleInputChange(e);
+                                }}
                               >
                                 <option className="label-text" value="">
                                   Select
                                 </option>
-                                <option>1</option>
-                                <option>2</option>
+                                <option value={1}>1</option>
+                                <option value={2}>2</option>
                               </select>
+                              {controls.city.showErrorMsg && (
+                                <div className="error">
+                                  * Please select city.
+                                </div>
+                              )}
                             </FormGroup>
                           </Col>
                         </Row>
                         <Row>
                           <Col lg="4">
-                            <Label className="custom-lable">
-                              Pacemaker Serial Number
-                              <span className="required-field">*</span>
-                            </Label>
-                            <Input
-                              type="text"
-                              name="pacemaker_number"
-                              placeholder="Type Here"
-                              // onChange={this.handleChangeInput}
-                              // value={controls.campaign_name.value}
-                              // id="campaign_name"
-                            />
-                          </Col>
-                          <Col lg="4">
-                            <Label className="custom-lable">
-                              Primary Physician Contact
-                              <span className="required-field">*</span>
-                            </Label>
-                            <InputGroup>
-                              <InputGroupAddon addonType="prepend">
-                                +91
-                              </InputGroupAddon>
+                            <FormGroup>
+                              <Label className="custom-lable">
+                                Pacemaker Serial Number
+                                <span className="required-field">*</span>
+                              </Label>
                               <Input
                                 type="text"
-                                name="physician_number"
+                                name="pacemaker_number"
                                 placeholder="Type Here"
+                                onChange={this.handleInputChange}
+                                value={controls.pacemaker_number.value}
+                                id="pacemaker_number"
                               />
-                            </InputGroup>
+                              {controls.pacemaker_number.showErrorMsg && (
+                                <div className="error">
+                                  * Please enter pacemaker number.
+                                </div>
+                              )}
+                            </FormGroup>
                           </Col>
                           <Col lg="4">
-                            <Label className="custom-lable">
-                              Cardiologist Contact
-                              <span className="required-field">*</span>
-                            </Label>
-                            <InputGroup>
-                              <InputGroupAddon addonType="prepend">
-                                +91
-                              </InputGroupAddon>
-                              <Input
-                                type="text"
-                                name="cardiologist_number"
-                                placeholder="Type Here"
-                              />
-                            </InputGroup>
+                            <FormGroup>
+                              <Label className="custom-lable">
+                                Primary Physician Contact
+                                <span className="required-field">*</span>
+                              </Label>
+                              <InputGroup>
+                                <InputGroupAddon addonType="prepend">
+                                  +91
+                                </InputGroupAddon>
+                                <Input
+                                  type="text"
+                                  name="physician_contact"
+                                  placeholder="Type Here"
+                                  onChange={this.handleInputChange}
+                                  value={controls.physician_contact.value}
+                                  id="physician_contact"
+                                />
+                              </InputGroup>
+                              {controls.physician_contact.showErrorMsg && (
+                                <div className="error">
+                                  * Please enter pacemaker number.
+                                </div>
+                              )}
+                            </FormGroup>
+                          </Col>
+                          <Col lg="4">
+                            <FormGroup>
+                              <Label className="custom-lable">
+                                Cardiologist Contact
+                                <span className="required-field">*</span>
+                              </Label>
+                              <InputGroup>
+                                <InputGroupAddon addonType="prepend">
+                                  +91
+                                </InputGroupAddon>
+                                <Input
+                                  type="text"
+                                  name="cardiologist_contact"
+                                  placeholder="Type Here"
+                                  onChange={this.handleInputChange}
+                                  value={controls.cardiologist_contact.value}
+                                  id="cardiologist_contact"
+                                />
+                              </InputGroup>
+                              {controls.cardiologist_contact.showErrorMsg && (
+                                <div className="error">
+                                  * Please enter cardiologist number.
+                                </div>
+                              )}
+                            </FormGroup>
                           </Col>
                         </Row>
 
-                        <div className="d-flex justify-content-center">
+                        <div className="d-flex justify-content-center my-3">
                           <Button
                             color="primary"
                             size="lg"

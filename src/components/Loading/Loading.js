@@ -7,7 +7,10 @@ function Loading() {
       <div className="loader-container">
         <div className="loader-container-inner">
           <div className="text-center">
-            <Loader type="ball-grid-beat" className="loader-suspense" />
+            <Loader
+              type="line-scale-pulse-out-rapid"
+              className="loader-suspense"
+            />
           </div>
           <h6 className="mt-3">Loading</h6>
         </div>

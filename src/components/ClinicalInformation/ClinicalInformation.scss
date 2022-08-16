@@ -1,0 +1,55 @@
+.clinicalInfo-main{
+ 
+  .main-card{
+    .info-main{
+      p{
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 18px;
+        text-transform: capitalize;
+        color: #495057;
+        min-width: 150px;
+        margin: 0;
+      }
+     
+    }
+    .img-box{
+      text-align: center;
+      width: 80%;
+      margin: auto;
+      // @media screen and (max-width: 900px) {
+      //     width: 100%;
+      // }
+      img{
+        width: 100%;
+      }
+      .red-text{
+        color: #FF0000;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 16px;
+      }
+      .download-icon{
+        width: 16px;
+        margin-right: 10px;
+      }
+    }
+  }
+  .blue-button-square{
+    background: #083ABF;
+    border: 1px solid #083ABF;
+    border-radius: 5px;
+    font-size: 15px;
+    line-height: 18px;
+  }
+  .blue-line-button{
+    background: #FFFFFF;
+    border: 1px solid #083ABF;
+    border-radius: 24px;
+    color: #083ABF;
+    min-width: 110px;
+    padding: 5px 20px;
+  }
+}

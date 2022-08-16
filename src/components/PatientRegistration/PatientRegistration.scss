@@ -13,14 +13,16 @@
   .custom-lable {
     font-size: 15px;
   }
-  .form-control, .input-group-text{
-    margin-bottom: 20px;
+  .datepicker-input{
+    z-index: 11;
+    position: relative;
   }
   .input-group > .react-datepicker-wrapper > .react-datepicker__input-container > .form-control{
       border-top-right-radius: 0.25rem; 
       border-bottom-right-radius: 0.25rem;
   }
   .input-group-text{
+    background-color: #F4F5F5;
     &.date-picker{
       position: absolute!important;
       top: 4px!important;
@@ -28,7 +30,7 @@
       z-index: 101!important;
       background-color: #ffffff!important;
       border: 0!important;
-      color: #545CD8 !important;
+      color: #083ABF !important;
     }
   }
   .custom-checkboax-radio--container {

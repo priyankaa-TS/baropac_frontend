@@ -19,28 +19,32 @@ const DATA = [
     id: 0,
     title: "Active Patients",
     value: "234",
+    desc: "Note: showing the No. of Active Patients",
   },
   {
     id: 1,
     title: "Inactive Patients",
     value: "170",
+    desc: "Note: showing the No. of Inactive Patients",
   },
   {
     id: 2,
     title: "Weight Count Pt.",
     value: "840",
+    desc: "Note: showing the No. of patients who measured Weight",
   },
   {
     id: 3,
     title: "B.P. Count Pt.",
     value: "1011",
+    desc: "Note: showing the No. of patients who measured B.P.",
   },
 ];
 
 const Dashboard = () => (
   <>
     <Fragment>
-      <ThemeOptions />
+      {/* <ThemeOptions /> */}
       <AppHeader />
       <div className="app-main">
         <AppSidebar />
@@ -49,7 +53,13 @@ const Dashboard = () => (
             <div className="dashboard-main">
               <Row>
                 {DATA.map((ele) => {
-                  return <DashboardCard data={ele} status={ele.title} />;
+                  return (
+                    <DashboardCard
+                      data={ele}
+                      status={ele.title}
+                      key={ele.id.toString()}
+                    />
+                  );
                 })}
               </Row>
               <Row>

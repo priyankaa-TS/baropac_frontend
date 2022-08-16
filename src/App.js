@@ -5,31 +5,10 @@ import cx from "classnames";
 import { connect } from "react-redux";
 import Routes from "./Routes";
 
-import AppMain from "./Layout/AppMain";
-
-import AppHeader from "./Layout/AppHeader";
-import ThemeOptions from "./Layout/ThemeOptions/index";
 // import "react-image-lightbox/style.css";
 // import Storage from "./services/Storage";
 
 import "./App.css";
-import Dashboards from "./DemoPages/Dashboards";
-import Dashboard from "./Pages/Dashboard/Dashboard";
-import Login from "./Pages/Login/Login";
-import Components from "./DemoPages/Components";
-import Forms from "./DemoPages/Forms";
-// import GoogleAnalticsService from "./services/GoogleAnalticsService";
-// import UserService from "./services/UserService";
-// import AuthService from "./services/AuthService";
-// import HandleCache from "./HandleCache";
-import Charts from "./DemoPages/Charts";
-import Elements from "./DemoPages/Elements";
-import Tables from "./DemoPages/Tables";
-import Widgets from "./DemoPages/Widgets/index";
-import UserPages from "./DemoPages/UserPages/index";
-import Applications from "./DemoPages/Applications";
-import Patient from "./Pages/Patient/Patient";
-import PatientRegistration from "./components/PatientRegistration/PatientRegistration";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -43,6 +22,7 @@ class App extends Component {
   // }
 
   render() {
+    console.log("=====>>>", this.props);
     const {
       colorScheme,
       enableFixedHeader,

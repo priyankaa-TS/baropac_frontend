@@ -85,10 +85,10 @@ export default class Login extends Component {
       return;
     }
 
-    // const obj = {
-    //   username: username.value,
-    //   password: password.value,
-    // };
+    const obj = {
+      username: username.value,
+      password: password.value,
+    };
     // this.setState({ errResponseMessage: "", isLoading: true });
 
     // await AuthService.login(obj)
@@ -216,7 +216,9 @@ export default class Login extends Component {
                           />
                           <div className="error-container">
                             {username.nullValue && (
-                              <div className="error">* Required</div>
+                              <div className="error">
+                                * Username should not be empty
+                              </div>
                             )}
                             {/* {!(
                               errResponseMessage === null ||
@@ -259,7 +261,9 @@ export default class Login extends Component {
                           />
                           <div className="error-container">
                             {password.nullValue && (
-                              <div className="error">* Password not empty</div>
+                              <div className="error">
+                                * Password should not be empty
+                              </div>
                             )}
                           </div>
                         </FormGroup>

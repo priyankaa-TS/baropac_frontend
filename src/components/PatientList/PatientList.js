@@ -4,11 +4,9 @@ import { Card, Row, Table, Col, CardBody, CardTitle, Button } from "reactstrap";
 import timerIcon from "../../assets/utils/images/timer.png";
 import Pagination from "./../../components/Pagination/Pagination";
 
-export default function PatientList(props) {
+export default function PatientList() {
   const history = useHistory();
-  // console.log("history: ", history);
   const handleClick = () => {
-    console.log("handleClick: ");
     history.push("/patient-info");
   };
   return (
@@ -17,52 +15,69 @@ export default function PatientList(props) {
         <Card className="main-card mb-3">
           <CardBody>
             {/* <CardTitle>Table bordered</CardTitle> */}
-            <Table className="mb-0 text-center" bordered>
+            <Table className="mb-0 text-center" bordered responsive>
               <thead>
                 <tr>
                   <th>MRN</th>
+                  <th>Date of Reg.</th>
                   <th>First Name</th>
                   <th>Last Name</th>
                   <th>Gender</th>
                   <th>DOB</th>
+                  <th>Last Successful Programming Date</th>
                   <th>Schdule</th>
-                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th scope="row">1</th>
                   <td>Mark</td>
+                  <td>14/07/2022</td>
                   <td>Otto</td>
                   <td>@mdo</td>
                   <td>Otto</td>
+                  <td>26 Jul 2022 02:00 PM</td>
                   <td>
-                    <img src={timerIcon} />
+                    <img
+                      src={timerIcon}
+                      className="cursor-pointer"
+                      onClick={handleClick}
+                    />
                   </td>
-                  <td>View</td>
                 </tr>
                 <tr>
                   <th scope="row">2</th>
                   <td>Jacob</td>
+                  <td>14/07/2022</td>
                   <td>Thornton</td>
                   <td>@fat</td>
                   <td>Thornton</td>
+                  <td>26 Jul 2022 02:00 PM</td>
+
                   <td>
-                    <img src={timerIcon} />
+                    <img
+                      src={timerIcon}
+                      className="cursor-pointer"
+                      onClick={handleClick}
+                    />
                   </td>
-                  <td>View</td>
                 </tr>
                 <tr>
                   <th scope="row">3</th>
                   <td>Larry</td>
+                  <td>14/07/2022</td>
+
                   <td>the Bird</td>
                   <td>@twitter</td>
                   <td>the Bird</td>
+                  <td>26 Jul 2022 02:00 PM</td>
+
                   <td>
-                    <img src={timerIcon} />
-                  </td>
-                  <td>
-                    <span onClick={handleClick}>View</span>
+                    <img
+                      src={timerIcon}
+                      className="cursor-pointer"
+                      onClick={handleClick}
+                    />
                   </td>
                 </tr>
               </tbody>

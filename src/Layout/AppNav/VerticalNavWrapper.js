@@ -25,7 +25,7 @@ class Nav extends Component {
           iconNamePrefix=""
           classNameStateIcon="pe-7s-angle-down"
         />
-        <h5 className="app-sidebar__heading">UI Components</h5>
+        {/* <h5 className="app-sidebar__heading">UI Components</h5>
         <MetisMenu
           content={ComponentsNav}
           activeLinkFromLocation
@@ -56,7 +56,7 @@ class Nav extends Component {
           className="vertical-nav-menu"
           iconNamePrefix=""
           classNameStateIcon="pe-7s-angle-down"
-        />
+        /> */}
       </Fragment>
     );
   }

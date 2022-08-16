@@ -15,4 +15,24 @@ export const STATUS = {
     color: "#00C3EE",
     name: "BP_Control",
   },
+  Ongoing: {
+    color: "#6ED3EA",
+    name: "Ongoing",
+  },
+  Success: {
+    color: "#63DD63",
+    name: "Success",
+  },
+  Aborted: {
+    color: "#FFC04D",
+    name: "Aborted",
+  },
+  Reverted: {
+    color: "#9797ED",
+    name: "Reverted",
+  },
+  Error: {
+    color: "#EA6E6E",
+    name: "Error",
+  },
 };

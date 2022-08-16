@@ -8,4 +8,130 @@
       margin-bottom: 3px;
     }
   }
+  .blue-button{
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 600;
+    padding: 10px 40px;
+  }
+  .table{
+    thead{
+      th{
+        border: 0;
+        padding: 0 0.55rem;
+      }
+    }
+    tbody{
+      color: #fff;
+    }
+  }
+  
+  
+  
+}
+.appointment-modal{
+  h5{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    color: #495057;
+    margin-bottom: 20px;
+  }
+  .custom-lable {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  
+}
+.modal-dialog-centered{
+  box-shadow: none !important;
+}
+.input-group > .react-datepicker-wrapper > .react-datepicker__input-container > .form-control{
+  border-top-right-radius: 0.25rem; 
+  border-bottom-right-radius: 0.25rem;
+  
+}
+.form-control{
+  &.timepicker{
+    background-color: #062E99 !important;
+    color: #fff !important;
+  }
+}
+.input-group-text{
+  &.date-picker{
+    position: absolute!important;
+    top: 4px!important;
+    right: 1px!important;
+    z-index: 101!important;
+    background-color: #ffffff!important;
+    border: 0!important;
+    color: #545CD8 !important;
+  }
+}
+.container-checkbox {
+  display: block;
+  position: relative;
+  padding-left: 29px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  /* font-size: 22px; */
+  -webkit-user-select: none;
+  user-select: none;
+  line-height: 17px;
+}
+
+/* Hide the browser's default checkbox */
+
+.container-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+
+.checkmark {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  height: 15px !important;
+  width: 15px !important;
+  background-color: #ffffff;
+  border: solid 1px rgba(73, 80, 87, 0.66);
+  border-color: #062E99;
+}
+
+/* When the checkbox is checked, add a blue background */
+
+.container-checkbox input:checked ~ .checkmark {
+  background-color: #062E99;
+    border: solid 1px #062E99;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+
+.container-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+
+.container-checkbox .checkmark:after {
+  left: 4px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
 }

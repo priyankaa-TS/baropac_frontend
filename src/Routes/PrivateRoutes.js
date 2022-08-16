@@ -12,6 +12,9 @@ const PatientInfo = lazy(() => import("../components/PatientInfo/PatientInfo"));
 const PatientRegistration = lazy(() =>
   import("../components/PatientRegistration/PatientRegistration")
 );
+const ClinicalInformation = lazy(() =>
+  import("../components/ClinicalInformation/ClinicalInformation")
+);
 
 const suspenseRoutesArr = [
   {
@@ -29,6 +32,10 @@ const suspenseRoutesArr = [
   {
     path: "/patient-info",
     component: PatientInfo,
+  },
+  {
+    path: "/clinical-info",
+    component: ClinicalInformation,
   },
 ];
 

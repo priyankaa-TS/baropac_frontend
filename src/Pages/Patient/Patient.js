@@ -13,7 +13,7 @@ export default class Patient extends Component {
   render() {
     return (
       <Fragment>
-        <ThemeOptions />
+        {/* <ThemeOptions /> */}
         <AppHeader />
         <div className="app-main">
           <AppSidebar />

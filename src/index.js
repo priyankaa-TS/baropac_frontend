@@ -1,17 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from "./serviceWorker";
 
-import { HashRouter } from 'react-router-dom';
-import './assets/base.scss';
-import Main from './DemoPages/Main';
-import configureStore from './config/configureStore';
-import { Provider } from 'react-redux';
-import App from './App';
+import { HashRouter } from "react-router-dom";
+import "./assets/base.scss";
+// import Main from './DemoPages/Main';
+import configureStore from "./config/configureStore";
+import { Provider } from "react-redux";
+import App from "./App";
 
 const store = configureStore();
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 
 // const renderApp = Component => {
 //     ReactDOM.render(
@@ -35,9 +35,8 @@ const rootElement = document.getElementById('root');
 // serviceWorker.unregister();
 
 const jsx = (
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
-  ReactDOM.render(jsx, document.getElementById("root"));
-
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+ReactDOM.render(jsx, document.getElementById("root"));
